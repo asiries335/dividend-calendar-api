@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'tinkoff' => [
+        'token' => env('TINKOFF_TOKEN', 't.Ac0tkjsQLK7bC_16gQasfcPMtHJ5dHIL_z0I0gkp2Pseqp09faCkgJ5Ps_K8Qf7NIK9X_M35-S3Dkmkw3X07IQ'),
+    ]
+
 ];

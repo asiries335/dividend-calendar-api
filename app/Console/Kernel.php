@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        $schedule->command('app:import-stocks')->daily();
         // $schedule->command('inspire')->hourly();
     }
 

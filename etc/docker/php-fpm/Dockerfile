@@ -12,6 +12,7 @@ COPY --chown=www-data:www-data ./ /www
 
 RUN docker-php-ext-install zip  && \
     docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install pdo_pgsql && \
     docker-php-ext-install opcache && \
     docker-php-ext-install intl && \
     docker-php-ext-install bcmath && \
