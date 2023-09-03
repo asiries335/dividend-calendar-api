@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Stock;
+use Illuminate\Support\LazyCollection;
 
 class StockEloquentRepository
 {
@@ -13,6 +14,14 @@ class StockEloquentRepository
     public function store(Stock $stock): bool
     {
         return $stock->save();
+    }
+
+    /**
+     * @return LazyCollection
+     */
+    public function getAllCursor(): LazyCollection
+    {
+        return Stock::query()->cursor();
     }
 
     /**

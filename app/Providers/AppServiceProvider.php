@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\GetDividends\GetDividendsHandlerInterface;
+use App\GetDividends\Handlers\TinkoffRestApiGetDividendsHandler;
 use App\Imports\Brands\ImportBrandsProviderInterface;
 use App\Imports\Brands\Providers\TinkoffRestApiImportBrandsProvider;
 use App\Imports\Stocks\ImportStocksProviderInterface;
@@ -32,6 +34,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ImportBrandsProviderInterface::class, function (Application $application) {
             // Использование тиньков провайдера
             return $application->make(TinkoffRestApiImportBrandsProvider::class);
+        });
+
+        $this->app->singleton(GetDividendsHandlerInterface::class, function (Application $application) {
+            // Использование тиньков провайдера
+            return $application->make(TinkoffRestApiGetDividendsHandler::class);
         });
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Components\Brands\Handlers\DTO\SaveBrandDto;
-use App\Components\Brands\Handlers\SaveBrandHandler;
+use App\Components\Stocks\Handlers\ImportDividendsHandler;
+use App\Models\Stock;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,25 +11,25 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SaveBrandJob implements ShouldQueue
+class ImportStockDividendsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private SaveBrandDto $dto;
+    private Stock $stock;
 
     /**
-     * @param SaveBrandDto $dto
+     * Create a new job instance.
      */
-    public function __construct(SaveBrandDto $dto)
+    public function __construct(Stock $stock)
     {
-        $this->dto = $dto;
+        $this->stock = $stock;
     }
 
     /**
      * Execute the job.
      */
-    public function handle(SaveBrandHandler $handler): void
+    public function handle(ImportDividendsHandler $handler): void
     {
-        $handler->handle($this->dto);
+        $handler->handleByStock($this->stock);
     }
 }
