@@ -3,7 +3,6 @@
 namespace App\Imports\Stocks\Providers;
 
 use App\Components\Stocks\Handlers\DTO\SaveStockDto;
-use App\Components\Stocks\Handlers\SaveStockHandler;
 use App\Enums\StockProviderEnum;
 use App\Imports\Stocks\ImportStocksProviderInterface;
 use App\Jobs\SaveStockJob;
